@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Generate snacknomama life by random}
   spec.description   = %q{Generate snacknomama life by random}
-  spec.homepage      = "https://github.com/YuheiNakasaka/snacknomama-generator"
+  spec.homepage      = "https://github.com/YuheiNakasaka/snacknomama"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
