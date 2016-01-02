@@ -3,7 +3,7 @@ require "snacknomama/version"
 module Snacknomama
   class << self
     def zinsei
-      zinsei = "両親#{ryoushin}->#{gakkou}学校#{gakkou_status}->結婚出産->旦那#{kekkonseikatsu}->離婚"
+      zinsei = "両親#{ryoushin}->#{gakkou}学校#{gakkou_status}->結婚出産->旦那#{kekkonseikatsu}->離婚バツ#{batsu}"
       return zinsei
     end
 
@@ -21,6 +21,10 @@ module Snacknomama
 
     def gakkou_status
       %w(卒業 中退 退学).sample
+    end
+
+    def batsu
+      %w(1 2 3 4).sample
     end
   end
 end
