@@ -1,10 +1,11 @@
 require "snacknomama/version"
 require "snacknomama/parser"
+require "gimei"
 
 module Snacknomama
   class << self
     def zinsei
-      zinsei = "スナック #{snack_name}\n両親#{ryoushin}->#{gakkou}学校#{gakkou_status}->結婚出産->旦那#{kekkonseikatsu}->離婚バツ#{batsu}"
+      zinsei = "店名: スナック #{snack_name}\nママ: #{mama}\n人生: 両親#{ryoushin}->#{gakkou}学校#{gakkou_status}->結婚出産->旦那#{kekkonseikatsu}->離婚バツ#{batsu}"
       return zinsei
     end
 
@@ -31,6 +32,10 @@ module Snacknomama
     def snack_name
       parser = Snacknomama::Parser.new
       parser.run.sample(rand(3)+1).join('')
+    end
+
+    def mama
+      Gimei.female.first.katakana
     end
   end
 end
