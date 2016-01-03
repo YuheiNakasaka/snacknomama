@@ -1,14 +1,15 @@
 require "snacknomama/version"
+require "snacknomama/parser"
 
 module Snacknomama
   class << self
     def zinsei
-      zinsei = "両親#{ryoushin}->#{gakkou}学校#{gakkou_status}->結婚出産->旦那#{kekkonseikatsu}->離婚バツ#{batsu}"
+      zinsei = "スナック #{snack_name}\n両親#{ryoushin}->#{gakkou}学校#{gakkou_status}->結婚出産->旦那#{kekkonseikatsu}->離婚バツ#{batsu}"
       return zinsei
     end
 
     def ryoushin
-      %w(離婚 死).sample
+      %w(離婚 死 富豪).sample
     end
 
     def kekkonseikatsu
@@ -25,6 +26,11 @@ module Snacknomama
 
     def batsu
       %w(1 2 3 4).sample
+    end
+
+    def snack_name
+      parser = Snacknomama::Parser.new
+      parser.run.sample(rand(3)+1).join('')
     end
   end
 end
