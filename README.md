@@ -28,10 +28,22 @@ $ snacknomama
 ママ: ユウヒ
 人生: 両親富豪->中学校卒業->結婚出産->旦那借金->離婚バツ2
 
-$ snacknomama
-店名: スナック 花幸STELLA
-ママ: チナツ
-人生: 両親死->高等学校中退->結婚出産->旦那暴力->離婚バツ1
+$ snacknomama -s
+スナック 花幸STELLA
+
+$ snacknomama -m
+チナツ
+
+$ snacknomama -z
+両親死->高等学校中退->結婚出産->旦那暴力->離婚バツ1
+
+$ snacknomama -h
+Usage: snacknomama [options]
+options:
+    -h, --help                       Show help message
+    -s, --snack                      Generate a snack name
+    -m, --mama                       Generate a mama name
+    -z, --zinsei                     Generate a zinsei
 ```
 
 ## Development

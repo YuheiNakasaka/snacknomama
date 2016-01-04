@@ -2,5 +2,39 @@
 # coding: utf-8
 
 require "snacknomama"
+require "optparse"
 
-puts Snacknomama.zinsei
+snackno = nil
+OptionParser.new do |opt|
+  opt.banner = "Usage: snacknomama [options]"
+  opt.separator("options: ")
+  opt.on("-h", "--help", "Show help message") do
+    puts opt
+    exit
+  end
+
+  opt.on('-s', '--snack', 'Generate a snack name') do
+    snackno = 'snack_name'
+  end
+
+  opt.on('-m', '--mama', 'Generate a mama name') do
+    snackno = 'mama_name'
+  end
+
+  opt.on('-z', '--zinsei', 'Generate a zinsei') do
+    snackno = 'zinsei'
+  end
+
+  opt.parse!(ARGV)
+end
+
+case snackno
+when 'snack_name'
+  puts Snacknomama.snack
+when 'mama_name'
+  puts Snacknomama.mama
+when 'zinsei'
+  puts Snacknomama.zinsei
+else
+  puts Snacknomama.zinsei_all
+end

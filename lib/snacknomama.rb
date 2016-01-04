@@ -4,13 +4,28 @@ require "gimei"
 
 module Snacknomama
   class << self
-    def zinsei
-      zinsei = "店名: スナック #{snack_name}\nママ: #{mama}\n人生: 両親#{ryoushin}->#{gakkou}学校#{gakkou_status}->結婚出産->旦那#{kekkonseikatsu}->離婚バツ#{batsu}"
-      return zinsei
+    def zinsei_all
+      output = "店名: #{snack}\nママ: #{mama}\n人生: #{zinsei}"
+      return output
     end
 
+    def snack
+      parser = Snacknomama::Parser.new
+      "スナック #{parser.run.sample(rand(3)+1).join('')}"
+    end
+
+    def mama
+      Gimei.female.first.katakana
+    end
+
+    def zinsei
+      "両親#{ryoushin}->#{gakkou}学校#{gakkou_status}->結婚出産->旦那#{kekkonseikatsu}->離婚バツ#{batsu}"
+    end
+
+    private
+
     def ryoushin
-      %w(離婚 死 富豪).sample
+      %w(離婚 死別 富豪).sample
     end
 
     def kekkonseikatsu
@@ -27,15 +42,6 @@ module Snacknomama
 
     def batsu
       %w(1 2 3 4).sample
-    end
-
-    def snack_name
-      parser = Snacknomama::Parser.new
-      parser.run.sample(rand(3)+1).join('')
-    end
-
-    def mama
-      Gimei.female.first.katakana
     end
   end
 end
